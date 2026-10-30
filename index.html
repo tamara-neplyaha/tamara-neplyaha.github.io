@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тамара Непляха — риелтор в Краснодаре</title>
+  <meta name="theme-color" content="#FBF6EE">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔑</text></svg>">
+  <meta name="description" content="Риелтор в Краснодаре. Помогу найти квартиру и пройти сделку спокойно: от выбора до получения ключей.">
+  
+  <!-- Настройки для красивого превью в Telegram (Open Graph) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.io">
+  <meta property="og:title" content="Тамара Непляха — риелтор в Краснодаре">
+  <meta property="og:description" content="В недвижимости с 2014 года. Помогу найти квартиру и пройти сделку спокойно: от выбора до получения ключей.">
+  <meta property="og:image" content="preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --milk: #FBF6EE;
+      --sand: #EFE2D2;
+      --terracotta: #A8573C;
+      --ink: #3B2A22;
+      --muted: #7D6759;
+      --on-terracotta: #FFFFFF;
+      --padding-top: env(safe-area-inset-top, 20px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--milk);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: calc(var(--padding-top) + 20px) 20px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .profile { display: flex; flex-direction: column; align-items: center; margin-bottom: 32px; text-align: center; }
+    .avatar-container {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid var(--terracotta);
+      overflow: hidden;
+      margin-bottom: 16px;
+      background-color: var(--sand);
+    }
+    .avatar { width: 100%; height: 100%; object-fit: cover; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .subtitle { font-size: 18px; color: var(--terracotta); font-weight: 500; margin-bottom: 12px; }
+    .bio { font-size: 16px; color: var(--muted); max-width: 480px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .stat-card { background: var(--sand); padding: 16px; border-radius: 16px; text-align: center; }
+    .stat-card strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 4px; }
+    .stat-card span { font-size: 14px; color: var(--muted); display: block; line-height: 1.3; }
+    .links-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 12px; }
+    .links-list { display: flex; flex-direction: column; gap: 12px; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.1s ease;
+      text-align: center;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background-color: var(--terracotta); color: var(--on-terracotta); font-weight: 700; }
+    .btn-secondary { background-color: var(--sand); color: var(--ink); }
+    .btn-secondary span { font-size: 14px; color: var(--muted); display: block; margin-top: 2px; font-weight: 400; }
+    .btn-content { display: flex; flex-direction: column; align-items: center; }
+    .btn-title { font-weight: 500; }
+    .footer { text-align: center; margin-top: 48px; font-size: 14px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <div class="profile">
+    <div class="avatar-container">
+      <img src="preview.jpg" alt="Тамара Непляха" class="avatar">
+    </div>
+    <h1>Тамара Непляха</h1>
+    <div class="subtitle">Риелтор в Краснодаре</div>
+    <div class="bio">Помогу найти квартиру и пройти сделку спокойно: от выбора до получения ключей.</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <strong>С 2014 года</strong>
+      <span>работаю в недвижимости Краснодара</span>
+    </div>
+    <div class="stat-card">
+      <strong>Две стороны рынка</strong>
+      <span>работала в агентстве и у застройщика</span>
+    </div>
+  </div>
+
+  <div class="links-section">
+    <div class="links-title">Позвоните или напишите там, где вам удобнее</div>
+    <div class="links-list">
+      <a href="tel:+79933160100" class="btn btn-primary">Позвонить +7 993 316-01-00</a>
+      
+      <a href="https://t.me" target="_blank" class="btn btn-secondary">
+        <div class="btn-content">
+          <div class="btn-title">Мой Telegram-канал</div>
+          <span>Про рынок, сделки и жизнь в Краснодаре</span>
+        </div>
+      </a>
+      
+      <a href="https://instagram.com" target="_blank" class="btn btn-secondary">
+        <div class="btn-content">
+          <div class="btn-title">Мой Инстаграм</div>
+          <span>Жизнь, город и недвижимость</span>
+        </div>
+      </a>
+      
+      <a href="https://wa.me" target="_blank" class="btn btn-secondary">
+        <div class="btn-content">
+          <div class="btn-title">Написать мне в WhatsApp</div>
+          <span>Чат со мной</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Ключи от Краснодара с Тамарой
+  </div>
+
+</body>
+</html>
