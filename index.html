@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тамара Непляха | Эксперт по недвижимости</title>
+    <!-- Метатеги для соцсетей и мессенджеров -->
+    <meta property="og:title" content="Тамара Непляха | Эксперт по недвижимости">
+    <meta property="og:description" content="Помогу купить, продать или инвестировать в недвижимость. Свяжитесь со мной в один клик!">
+    <meta property="og:url" content="https://github.io">
+    <meta property="og:image" content="https://github.iopreview.jpg">
+    <meta property="og:type" content="website">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 24px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: #22c55e;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid var(--card-bg);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer {
+            margin-top: 32px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="avatar-container">
+            <img src="preview.jpg" alt="Тамара Непляха" class="avatar">
+            <div class="status-badge"></div>
+        </div>
+
+        <h1>Тамара Непляха</h1>
+        <div class="subtitle">Эксперт по недвижимости</div>
+        <p class="description">Помогаю безопасно и выгодно покупать, продавать и инвестировать в недвижимость. Индивидуальный подход к каждому клиенту.</p>
+
+        <div class="links-container">
+            <!-- Telegram -->
+            <a href="https://t.me" class="btn btn-primary" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.39.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.37-.49 1.03-.74 4.04-1.76 6.74-2.92 8.09-3.48 3.85-1.6 4.64-1.88 5.17-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.03.19z"/>
+                </svg>
+                Связаться в Telegram
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me" class="btn btn-secondary" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.642.974 3.254 1.486 4.84 1.487 5.485 0 9.948-4.463 9.951-9.95.001-2.657-1.03-5.155-2.905-7.03-1.874-1.876-4.374-2.909-7.03-2.91-5.492 0-9.956 4.462-9.959 9.95-.001 1.904.508 3.762 1.472 5.405l-.994 3.634 3.725-.977zm11.134-4.524c-.301-.15-1.784-.88-2.06-.98-.276-.1-.478-.15-.678.15-.2.3-.778.98-.953 1.18-.176.2-.352.225-.653.075-.301-.15-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.676-2.085-.176-.3-.019-.462.13-.611.135-.134.301-.35.452-.525.15-.175.2-.3.301-.5.101-.2.05-.375-.025-.525-.075-.15-.678-1.635-.93-2.245-.244-.587-.492-.508-.678-.517-.175-.008-.376-.01-.577-.01-.2 0-.527.075-.803.375-.276.3-1.054 1.03-1.054 2.515s1.08 2.915 1.23 3.115c.15.2 2.126 3.245 5.15 4.554.719.311 1.28.497 1.716.636.722.23 1.379.197 1.898.12.578-.085 1.783-.73 2.034-1.435.251-.705.251-1.305.176-1.435-.075-.13-.276-.205-.577-.355z"/>
+                </svg>
+                Связаться в WhatsApp
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 Тамара Непляха. Все права защищены.
+        </div>
+    </div>
+
+</body>
+</html>
