@@ -71,8 +71,14 @@ button.builder:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
 .gal-thumbs img.is-on{opacity:1;border-color:#fff}
 @media(max-width:720px){.gal-nav{width:38px;height:38px}}
 </style>
+<style>
+.backbar{background:var(--sand);border-bottom:1px solid var(--line)}
+.back-link{display:inline-flex;align-items:center;gap:6px;padding:11px 0;font:600 14px var(--sans);color:var(--terra);text-decoration:none}
+.back-link:hover{color:var(--terra-deep)}
+</style>
 </head>
 <body>
+<div class="backbar"><div class="wrap"><a class="back-link" href="https://tamara-neplyaha.github.io/" data-back>← Назад к визитке</a></div></div>
 <header class="top"><div class="wrap"><div class="brand">Тамара Непляха<small>Недвижимость · Краснодар</small></div><nav class="topnav"><a href="#choice">Застройщики</a><a href="#why">Почему со мной</a><a href="#support">Сопровождение</a><a href="#about">Обо мне</a></nav><a class="btn light call-link" href="tel:+79933160100" aria-label="Позвонить Тамаре по номеру +7 993 316-01-00">Позвонить мне</a></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="eyebrow">Новостройки Краснодара</div><h1>Квартира, в которой начинается <span>ваша история.</span></h1><p class="lead">Вы можете купить квартиру напрямую у застройщика. А можете поручить мне найти для вас подходящий вариант, сравнить условия и пройти весь путь покупки спокойно — до получения ключей.</p><div class="hero-person"><img alt="Тамара Непляха" src=""><div><b>Тамара Непляха</b><span>Риелтор, с 2014 года в недвижимости Краснодара</span></div></div><button class="btn contact-picker" type="button" data-message="Здравствуйте! Хочу подобрать квартиру в новостройке Краснодара.">Подобрать квартиру <span>↗</span></button><p class="hero-ease">Не знаете бюджет и район? Это нормально. Напишите одним сообщением, остальное разберём вместе.</p><p class="hero-note">Подбор и сопровождение для покупателя — бесплатно. Вознаграждение специалисту выплачивает застройщик по партнёрским условиям.</p><div class="trustline"><div><b>С 2014</b>в недвижимости</div><div><b>Разные ЖК</b>сравниваем рынок, а не один объект</div><div><b>0 ₽</b>для покупателя за подбор</div><div><b>До ключей</b>сопровождение на каждом этапе</div></div></div></section>
@@ -169,4 +175,5 @@ button.builder:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
  g.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(d)>50)show(i+(d<0?1:-1));});
 })();
 </script>
+<script>(function(){document.querySelectorAll("[data-back]").forEach(function(a){a.addEventListener("click",function(e){try{var t=new URL(a.href),r=new URL(document.referrer);if(history.length>1&&r.origin===t.origin&&r.pathname===t.pathname){e.preventDefault();history.back();}}catch(x){}});});})();</script>
 </body></html>
