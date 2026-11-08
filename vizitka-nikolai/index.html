@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Электронная визитка под ключ — Николай</title>
+<meta name="description" content="Электронная визитка: ссылка, QR-код и все ваши контакты в одном месте. Закажите в личных сообщениях.">
+<meta property="og:title" content="Электронная визитка под ключ">
+<meta property="og:description" content="Ссылка, QR-код и все контакты в одном месте.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://tamara-neplyaha.github.io/vizitka-nikolai/">
+<meta property="og:image" content="https://tamara-neplyaha.github.io/vizitka-nikolai/preview.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2E4A3E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Визитка">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Палитра: меняется здесь, в одном месте */
+:root{
+  --bg:#ECE9E2;        /* камень */
+  --surface:#F7F5F0;   /* светлая поверхность */
+  --ink:#1E2924;       /* тёмный зелёный */
+  --muted:#5D6A63;
+  --green:#2E4A3E;     /* глубокий зелёный */
+  --green-ink:#F4F1EA;
+  --brass:#A68A5B;     /* матовая латунь */
+  --line:#D5D0C4;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#141A17;--surface:#1D2521;--ink:#EDEAE2;--muted:#9AA79F;--green:#7FA08F;--green-ink:#10170F;--brass:#C2A56F;--line:#2D3731}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,"Segoe UI",system-ui,sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:460px;margin:0 auto;padding:36px 24px 32px}
+h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:38px}
+h2{font-size:27px;margin-bottom:14px}
+.lead{margin-top:16px;color:var(--muted);font-size:17px}
+section{margin-top:40px}
+
+/* телефон */
+.stage{margin:32px 0 0;display:flex;justify-content:center}
+.phone{width:200px;border-radius:30px;padding:8px;background:var(--ink);box-shadow:0 18px 40px -18px rgba(30,41,36,.55)}
+.screen{border-radius:23px;background:var(--surface);padding:20px 14px 14px;text-align:center}
+.ava{width:62px;height:62px;margin:0 auto 8px;border-radius:50%;background:var(--green);color:var(--green-ink);display:flex;align-items:center;justify-content:center;font:600 23px "Cormorant Garamond",Georgia,serif;border:3px solid var(--surface);box-shadow:0 0 0 1.5px var(--brass)}
+.screen b{display:block;font:600 20px/1.05 "Cormorant Garamond",Georgia,serif;letter-spacing:.02em;padding-bottom:7px;position:relative}
+.screen b::after{content:"";position:absolute;left:50%;bottom:0;width:26px;height:1.5px;margin-left:-13px;background:var(--brass)}
+.screen b+small{margin-top:7px}
+.screen small{display:block;color:var(--muted);font-size:11.5px;line-height:1.35;margin-top:2px}
+.screen ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px}
+.screen li{padding:8px 10px;border-radius:11px;background:var(--bg);font-size:12px;font-weight:600}
+.screen li.save{background:var(--green);color:var(--green-ink)}
+.example{display:block;text-align:center;margin-top:18px;font-weight:700;color:var(--green);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--brass)}
+
+/* преимущества: компактная сетка */
+.perks{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.perks li{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14.5px;line-height:1.35}
+.perks svg{width:26px;height:26px;fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* кнопка «все возможности» */
+details.more{margin-top:12px}
+details.more summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:1.5px solid var(--brass);font-weight:700;color:var(--green);-webkit-tap-highlight-color:transparent}
+details.more summary::-webkit-details-marker{display:none}
+details.more .c{display:none}
+details.more[open] .o{display:none}
+details.more[open] .c{display:inline}
+.all{list-style:none;padding:6px 0 0;margin-top:6px}
+.all li{padding:11px 0 11px 22px;border-bottom:1px solid var(--line);font-size:15px;position:relative}
+.all li::before{content:"";position:absolute;left:2px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--brass)}
+.all li span{color:var(--muted)}
+
+/* шаги в одну строку */
+.steps{list-style:none;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.steps li{counter-increment:s;font-size:14px;font-weight:600;line-height:1.35}
+.steps li::before{content:counter(s);display:flex;width:30px;height:30px;margin-bottom:8px;border-radius:50%;border:1.5px solid var(--brass);align-items:center;justify-content:center;font:600 17px "Cormorant Garamond",Georgia,serif;color:var(--brass)}
+
+/* варианты */
+.plans{display:grid;gap:10px}
+.plan{padding:16px 16px 14px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.plan.main{border-color:var(--brass)}
+.plan h3{font-size:16.5px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.plan h3 em{font-style:normal;color:var(--brass);white-space:nowrap}
+.plan p{margin-top:5px;color:var(--muted);font-size:14px;line-height:1.5}
+
+/* связь */
+.contact{margin-top:40px;padding:28px 22px;border-radius:24px;background:var(--green);color:var(--green-ink)}
+.contact h2{margin-bottom:8px}
+.contact p{opacity:.85;font-size:15px}
+.contact .row{margin-top:20px;display:grid;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px}
+.btn.primary{background:var(--green-ink);color:var(--green)}
+.btn.ghost{border:1.5px solid rgba(244,241,234,.55);color:var(--green-ink)}
+@media (prefers-color-scheme:dark){.btn.ghost{border-color:rgba(16,23,15,.5)}}
+.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.example{display:inline-block;margin-top:22px;font-weight:700;color:var(--green);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--brass)}
+footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+
+/* варианты как кнопки */
+button.plan{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .15s,transform .15s}
+button.plan:active{transform:scale(.99)}
+button.plan:hover{border-color:var(--brass)}
+.plan .pick{display:inline-block;margin-top:10px;font-weight:700;font-size:14px;color:var(--green);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--brass)}
+
+/* окно заявки */
+dialog{border:0;padding:0;background:transparent;color:var(--ink);width:100%;max-width:100%;max-height:100%;margin:0;position:fixed;inset:auto 0 0 0}
+dialog::backdrop{background:rgba(20,26,23,.55)}
+@media (min-width:560px){dialog{inset:0;margin:auto;max-width:460px;height:fit-content}}
+.sheet{background:var(--surface);border-radius:24px 24px 0 0;padding:22px 22px calc(22px + env(safe-area-inset-bottom,0px));max-height:92vh;max-height:92dvh;overflow-y:auto;animation:up .22s ease-out}
+@media (min-width:560px){.sheet{border-radius:24px}}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sheet h2{font-size:27px;margin-bottom:4px}
+.chosen{color:var(--brass);font-weight:700;font-size:15px}
+.x{flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.field{margin-top:14px}
+.field>label,.field>.lab{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.field .hint{font-weight:400;color:var(--muted)}
+.field input[type=text],.field input[type=tel],.field input[type=email],.field textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;min-height:48px}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:2px solid var(--brass);outline-offset:1px;border-color:var(--brass)}
+.field.bad input{border-color:#B3472E}
+.err{display:none;color:#B3472E;font-size:13px;margin-top:5px}
+.field.bad .err{display:block}
+@media (prefers-color-scheme:dark){.err{color:#E58B72}.field.bad input{border-color:#E58B72}}
+.choices{display:flex;gap:8px;flex-wrap:wrap}
+.choices label{display:flex;align-items:center;gap:8px;padding:10px 14px;min-height:44px;border-radius:999px;border:1.5px solid var(--line);font-weight:600;font-size:14.5px;cursor:pointer;margin:0}
+.choices input{accent-color:var(--green);width:16px;height:16px;margin:0}
+.choices label:has(input:checked){border-color:var(--brass);background:var(--bg)}
+.extra[hidden]{display:none}
+.send{margin-top:20px;display:grid;gap:10px}
+.send .btn{border:0;font-family:inherit;cursor:pointer;width:100%}
+.send .btn.primary{background:var(--green);color:var(--green-ink)}
+.send .btn.line{background:transparent;border:1.5px solid var(--brass);color:var(--green)}
+.note{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5;text-align:center}
+.toast{margin-top:10px;text-align:center;font-weight:700;font-size:14px;color:var(--green);min-height:20px}
+
+/* музыка и собачка */
+.wrap{padding-bottom:120px}
+.music{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.mbtn{position:relative;pointer-events:auto;display:flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid var(--brass);background:var(--green);color:var(--green-ink);font:700 15px/1 Manrope,"Segoe UI",system-ui,sans-serif;cursor:pointer;box-shadow:0 10px 24px -10px rgba(30,41,36,.6);-webkit-tap-highlight-color:transparent}
+.mbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+canvas#leaves{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
+
+/* новогодняя шапочка (только зимой) */
+.phone{position:relative}
+.hat{display:none;position:absolute;right:-42px;top:-64px;width:96px;height:96px;transform:rotate(34deg);transform-origin:50% 86%;pointer-events:none;filter:drop-shadow(0 4px 5px rgba(0,0,0,.28))}
+html.winter .hat{display:block}
+
+/* новогодняя надпись (только зимой) */
+.ny{display:none;margin:0 0 14px;text-align:center;font:600 26px/1.1 "Cormorant Garamond",Georgia,serif;color:var(--brass);letter-spacing:.01em}
+.ny b{font-weight:inherit;text-align:center}
+.ny span{display:inline-block;margin:0;font-size:16px;vertical-align:middle;opacity:.9}
+html.winter .ny{display:flex;align-items:center;justify-content:center;gap:12px}
+
+/* кнопка «Сохранить визитку» */
+body{position:relative}
+.wrap{padding-top:68px}
+.savecard{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;z-index:6;display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 15px;border-radius:999px;border:1.5px solid var(--brass);background:var(--green);color:var(--green-ink);font:700 14px/1 Manrope,"Segoe UI",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.savecard svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sharecard{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);left:16px;z-index:6;display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--brass);background:transparent;color:var(--green);font:700 14px/1 Manrope,"Segoe UI",system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sharecard svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:380px){.sharecard,.savecard{font-size:13px;padding:0 11px;gap:5px}.sharecard{left:10px}.savecard{right:10px}}
+.savecard[hidden]{display:none}
+.how{margin:14px 0 0;padding:0;list-style:none;counter-reset:h;display:grid;gap:10px}
+.how li{counter-increment:h;position:relative;padding-left:38px;font-size:15.5px;line-height:1.45}
+.how li::before{content:counter(h);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--brass);display:flex;align-items:center;justify-content:center;font:600 16px "Cormorant Garamond",Georgia,serif;color:var(--brass)}
+</style>
+<script>
+/* Сезон: зима с 1 декабря по 10 января включительно, в остальное время осень.
+   Для проверки: добавьте к адресу ?season=winter или ?season=autumn */
+(function(){
+  var d=new Date(),m=d.getMonth(),n=d.getDate();
+  var w=(m===11)||(m===0&&n<=10);
+  var q=location.search.match(/[?&]season=(winter|autumn)/);
+  if(q)w=(q[1]==='winter');
+  window.__winter=w;
+  /* с 1 января поздравление без «наступающего»; для проверки: ?season=winter&after=1 */
+  window.__ny=(m===0)||/[?&]after=1/.test(location.search);
+  if(w)document.documentElement.classList.add('winter');
+})();
+</script>
+</head>
+<body>
+<button type="button" class="sharecard" id="sharecard">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 13v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>
+  <span id="sharelab">Поделиться</span>
+</button>
+<button type="button" class="savecard" id="savecard" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19h14"/></svg>
+  Сохранить визитку
+</button>
+<dialog id="inst">
+  <div class="sheet">
+    <div class="sheet-head">
+      <div><h2>Визитка на экране телефона</h2></div>
+      <button type="button" class="x" id="inst-x" aria-label="Закрыть">×</button>
+    </div>
+    <ol class="how" id="how"></ol>
+  </div>
+</dialog>
+<main class="wrap">
+
+  <p class="ny"><span aria-hidden="true">❄</span><b id="nytxt">С наступающим<br>Новым годом!</b><span aria-hidden="true">❄</span></p>
+  <h1>Ваша работа заслуживает современной визитки</h1>
+  <p class="lead">Электронная визитка: все ваши контакты в одной ссылке и в одном QR-коде.</p>
+
+  <div class="stage" aria-hidden="true">
+    <div class="phone"><svg class="hat" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="hatred" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0443C"/><stop offset=".6" stop-color="#D42A2A"/><stop offset="1" stop-color="#A81B20"/></linearGradient>
+          <radialGradient id="fur" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6ECF2"/></radialGradient>
+        </defs>
+        <path d="M14 76C17 42 36 14 66 12C80 10 93 20 95 35C89 31 80 32 75 38C72 52 80 64 88 76Z" fill="url(#hatred)"/>
+        <path d="M30 70C32 50 42 32 58 22" stroke="#FF8A80" stroke-opacity=".55" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <g fill="url(#fur)">
+          <circle cx="94" cy="39" r="9.5"/><circle cx="88" cy="33" r="5"/><circle cx="99" cy="33" r="4.5"/><circle cx="90" cy="46" r="5"/><circle cx="99" cy="44" r="4"/>
+        </g>
+        <g fill="url(#fur)">
+          <rect x="8" y="70" width="88" height="19" rx="9.5"/>
+          <circle cx="12" cy="79" r="8"/><circle cx="26" cy="87" r="6.5"/><circle cx="44" cy="88" r="6.5"/><circle cx="62" cy="88" r="6.5"/><circle cx="80" cy="87" r="6.5"/><circle cx="92" cy="79" r="8"/>
+          <circle cx="22" cy="71" r="6"/><circle cx="40" cy="70" r="6"/><circle cx="58" cy="70" r="6"/><circle cx="76" cy="71" r="6"/>
+        </g>
+        <path d="M14 82C30 86 70 86 90 82" stroke="#C9D5E0" stroke-opacity=".7" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg><div class="screen">
+      <div class="ava">ИФ</div>
+      <b>Имя Фамилия</b>
+      <small>Руководитель по развитию бизнеса</small>
+      <ul>
+        <li>Позвонить</li>
+        <li>Написать в Telegram</li>
+        <li class="save">Сохранить в контакты</li>
+      </ul>
+    </div></div>
+  </div>
+  <a class="example" href="https://tamara-neplyaha.github.io/">Посмотреть живой пример</a>
+
+  <section>
+    <h2>Что вы получаете</h2>
+    <ul class="perks">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg>Контакты в одно касание</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM17 20h4M20 17v3"/></svg>QR-код для быстрого сохранения</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Работает с любым смартфоном</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8c-3 0-5 2-5 4s2 4 5 4c4 0 6-8 10-8 3 0 5 2 5 4s-2 4-5 4c-4 0-6-8-10-8z"/></svg>Данные всегда актуальны</li>
+    </ul>
+    <details class="more">
+      <summary><span class="o">Все возможности визитки</span><span class="c">Свернуть</span></summary>
+      <ul class="all">
+        <li>Фото, имя и короткий рассказ о вас</li>
+        <li>Звонок и сохранение контакта в телефон</li>
+        <li>Кнопки Telegram, WhatsApp, Макс и других мессенджеров</li>
+        <li>Ссылки на соцсети, сайт и ваши услуги</li>
+        <li>Ссылка и QR-код</li>
+        <li>Отзывы клиентов и кейсы</li>
+        <li>Раздел «Мои объекты» или «Мои услуги» со ссылками</li>
+        <li>Светлая и тёмная тема: подстраивается под телефон</li>
+        <li>Сезонное оформление</li>
+        <li>Музыкальное оформление</li>
+        <li>NFC-метка: брелок или наклейка, достаточно приложить к телефону</li>
+        <li>Правки и обновление данных по запросу</li>
+      </ul>
+    </details>
+  </section>
+
+  <section>
+    <h2>Как заказать</h2>
+    <ol class="steps">
+      <li>Напишите мне в Telegram или WhatsApp</li>
+      <li>Пришлите фото, контакты и ссылки</li>
+      <li>Получите ссылку и QR-код</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Варианты</h2>
+    <div class="plans">
+      <button type="button" class="plan main" data-plan="Базовая" data-price="2 400 ₽" data-extra="">
+        <h3>Базовая <em>2 400 ₽</em></h3>
+        <p>Фото, описание, звонок, мессенджеры, сохранение в контакты, ссылка и QR-код.</p>
+        <span class="pick">Оформить заявку</span>
+      </button>
+      <button type="button" class="plan" data-plan="С отзывами и кейсами" data-price="2 700 ₽" data-extra="reviews">
+        <h3>С отзывами и кейсами <em>2 700 ₽</em></h3>
+        <p>Всё из базовой, плюс отзывы клиентов и истории работ, которые раскрываются по кнопке.</p>
+        <span class="pick">Оформить заявку</span>
+      </button>
+      <button type="button" class="plan" data-plan="Всё включено" data-price="3 000 ₽" data-extra="reviews nfc">
+        <h3>Всё включено <em>3 000 ₽</em></h3>
+        <p>Всё из предыдущих, плюс сезонное оформление и NFC-метка: брелок или наклейка, которую достаточно приложить к телефону.</p>
+        <span class="pick">Оформить заявку</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="contact" id="order">
+    <h2>Закажите свою визитку</h2>
+    <p>Напишите, и я отвечу, как лучше оформить именно вашу.</p>
+    <div class="row">
+      <a class="btn primary" href="https://t.me/Nikolai_NPL" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z"/></svg>Написать в Telegram
+      </a>
+      <a class="btn ghost" href="https://wa.me/79189626499" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>Написать в WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <footer>Николай</footer>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="sheet">
+    <div class="sheet-head">
+      <div>
+        <h2 id="dlg-title">Заявка на визитку</h2>
+        <div class="chosen" id="chosen"></div>
+      </div>
+      <button type="button" class="x" id="close" aria-label="Закрыть">×</button>
+    </div>
+
+    <div class="field" id="f-name">
+      <label for="name">Как вас зовут</label>
+      <input type="text" id="name" autocomplete="name" placeholder="Анна Петрова">
+      <div class="err">Укажите имя</div>
+    </div>
+    <div class="field" id="f-contact">
+      <label for="contact">Телефон или ник в Telegram</label>
+      <input type="text" id="contact" inputmode="text" autocomplete="tel" placeholder="+7 900 000-00-00 или @ник">
+      <div class="err">Укажите, как с вами связаться</div>
+    </div>
+    <div class="field" id="f-email">
+      <label for="email">Email</label>
+      <input type="email" id="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="name@mail.ru">
+      <div class="err">Укажите email в формате name@mail.ru</div>
+    </div>
+    <div class="field">
+      <label for="job">Чем занимаетесь <span class="hint">(должность, сфера)</span></label>
+      <input type="text" id="job" placeholder="Руководитель по развитию бизнеса">
+    </div>
+    <div class="field">
+      <label for="links">Что разместить на визитке <span class="hint">(мессенджеры, соцсети, сайт)</span></label>
+      <textarea id="links" placeholder="Telegram, WhatsApp, Instagram, сайт…"></textarea>
+    </div>
+    <div class="field extra" data-for="reviews" hidden>
+      <label for="reviews">Отзывы и кейсы <span class="hint">(ссылки или текст, можно прислать позже)</span></label>
+      <textarea id="reviews"></textarea>
+    </div>
+    <div class="field extra" data-for="nfc" hidden>
+      <div class="lab">NFC-метка</div>
+      <div class="choices">
+        <label><input type="radio" name="nfc" value="брелок" checked>Брелок</label>
+        <label><input type="radio" name="nfc" value="наклейка">Наклейка</label>
+      </div>
+    </div>
+    <div class="field extra" data-for="nfc" hidden>
+      <label for="season">Сезонное оформление <span class="hint">(пожелания)</span></label>
+      <input type="text" id="season" placeholder="Например, новогоднее">
+    </div>
+    <div class="field">
+      <label for="comment">Комментарий <span class="hint">(по желанию)</span></label>
+      <textarea id="comment"></textarea>
+    </div>
+
+    <div class="send">
+      <button type="button" class="btn primary" id="send-tg">Отправить в Telegram</button>
+      <button type="button" class="btn line" id="send-wa">Отправить в WhatsApp</button>
+      <button type="button" class="btn line" id="copy">Скопировать заявку</button>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <p class="note">Откроется чат со мной с готовым текстом заявки. Останется нажать «Отправить».</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var TG='https://t.me/Nikolai_NPL', WA='https://wa.me/79189626499';
+  var dlg=document.getElementById('dlg'), plan={name:'',price:'',extra:''};
+  var $=function(id){return document.getElementById(id)};
+
+  function open(btn){
+    plan={name:btn.dataset.plan,price:btn.dataset.price,extra:btn.dataset.extra||''};
+    $('chosen').textContent=plan.name+', '+plan.price;
+    document.querySelectorAll('.extra').forEach(function(el){
+      el.hidden = plan.extra.split(' ').indexOf(el.dataset.for)===-1;
+    });
+    $('toast').textContent='';
+    if(dlg.showModal){dlg.showModal()}else{dlg.setAttribute('open','')}
+  }
+  document.querySelectorAll('button.plan').forEach(function(b){
+    b.addEventListener('click',function(){open(b)});
+  });
+  $('close').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+
+  function val(id){return ($(id).value||'').trim()}
+  function valid(){
+    var ok=true;
+    [['name','f-name'],['contact','f-contact'],['email','f-email']].forEach(function(p){
+      var bad=!val(p[0]);
+      if(p[0]==='email'&&!bad)bad=!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'));
+      $(p[1]).classList.toggle('bad',bad);
+      if(bad&&ok){$(p[0]).focus()}
+      if(bad)ok=false;
+    });
+    return ok;
+  }
+  ['name','contact','email'].forEach(function(id){
+    $(id).addEventListener('input',function(){$('f-'+id).classList.remove('bad')});
+  });
+
+  function build(){
+    var L=['Заявка на электронную визитку','Вариант: '+plan.name+', '+plan.price,'Имя: '+val('name'),'Связь: '+val('contact'),'Email: '+val('email')];
+    if(val('job'))L.push('Чем занимаюсь: '+val('job'));
+    if(val('links'))L.push('Разместить: '+val('links'));
+    if(plan.extra.indexOf('reviews')>-1&&val('reviews'))L.push('Отзывы и кейсы: '+val('reviews'));
+    if(plan.extra.indexOf('nfc')>-1){
+      var r=document.querySelector('input[name=nfc]:checked');
+      L.push('NFC-метка: '+(r?r.value:''));
+      if(val('season'))L.push('Сезонное оформление: '+val('season'));
+    }
+    if(val('comment'))L.push('Комментарий: '+val('comment'));
+    return L.join('\n');
+  }
+  function toast(t){$('toast').textContent=t}
+
+  $('send-tg').addEventListener('click',function(){
+    if(!valid())return;
+    window.open(TG+'?text='+encodeURIComponent(build()),'_blank','noopener');
+  });
+  $('send-wa').addEventListener('click',function(){
+    if(!valid())return;
+    window.open(WA+'?text='+encodeURIComponent(build()),'_blank','noopener');
+  });
+  $('copy').addEventListener('click',function(){
+    if(!valid())return;
+    var t=build();
+    function fallback(){
+      var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';
+      document.body.appendChild(a);a.select();
+      try{document.execCommand('copy');toast('Заявка скопирована')}catch(e){toast('Не удалось скопировать')}
+      a.remove();
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){toast('Заявка скопирована')},fallback);
+    }else{fallback()}
+  });
+})();
+</script>
+
+<audio id="bgm" src="alex-morgan-autumn-autumn-552789.mp3" loop preload="none"></audio>
+<div class="music" id="music">
+  <button type="button" class="mbtn" id="mbtn" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
+    <span id="mlab">Включить музыку</span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var a=document.getElementById('bgm'), m=document.getElementById('music'),
+      b=document.getElementById('mbtn'), lab=document.getElementById('mlab'),
+      want=false, manual=false, busy=false;
+  /* зимой играет новогодняя музыка, в остальное время осенняя */
+  if(window.__winter)a.src='winter-music.mp3';
+  function ui(on){m.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');lab.textContent=on?'Выключить музыку':'Включить музыку'}
+
+  /* автозапуск: пробуем при первом касании, клике, прокрутке или нажатии клавиши */
+  var evs=['pointerdown','touchstart','touchend','click','keydown','wheel','touchmove','scroll'];
+  function stopAuto(){evs.forEach(function(e){window.removeEventListener(e,auto,true)})}
+  function auto(e){
+    if(want||manual||busy)return;
+    if(e&&e.target&&e.target.closest&&e.target.closest('#mbtn'))return;
+    busy=true;
+    var p=a.play();
+    if(p&&p.then){
+      p.then(function(){want=true;busy=false;ui(true);stopAuto()},function(){busy=false});
+    }else{want=true;busy=false;ui(true);stopAuto()}
+  }
+  evs.forEach(function(e){window.addEventListener(e,auto,{capture:true,passive:true})});
+
+  /* кнопка: ручное включение и выключение */
+  b.addEventListener('click',function(){
+    manual=true;stopAuto();
+    if(want){a.pause();want=false;ui(false);return}
+    var p=a.play();
+    if(p&&p.then){
+      p.then(function(){want=true;ui(true)}).catch(function(){
+        lab.textContent='Музыка недоступна';
+        setTimeout(function(){ui(false)},2200);
+      });
+    }else{want=true;ui(true)}
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(!want)return;
+    if(document.hidden){a.pause()}else{var p=a.play();if(p&&p.catch)p.catch(function(){})}
+  });
+
+})();
+</script>
+
+<canvas id="leaves" aria-hidden="true"></canvas>
+<script>
+(function(){
+  var cv=document.getElementById('leaves'), ctx=cv.getContext('2d'), music=document.getElementById('music');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var leaf=new Path2D('M0 -50L9 -30L24 -36L20 -14L38 -18L30 0L48 6L24 18L26 30L6 26L4 50L-4 50L-6 26L-26 30L-24 18L-48 6L-30 0L-38 -18L-20 -14L-24 -36L-9 -30Z');
+  var winter=!!window.__winter;
+  var flake=new Path2D();
+  (function(){for(var k=0;k<6;k++){var an=k*Math.PI/3,c=Math.cos(an),sn=Math.sin(an);
+    flake.moveTo(0,0);flake.lineTo(c*10,sn*10);
+    [.5,.75].forEach(function(t,j){var bx=c*10*t,by=sn*10*t,bl=j?2.2:3.4;
+      [-1,1].forEach(function(sg){var a2=an+sg*Math.PI/3;flake.moveTo(bx,by);flake.lineTo(bx+Math.cos(a2)*bl,by+Math.sin(a2)*bl)})})}})();
+  var cols=['#B5391F','#C9501C','#D8741F','#E3962B','#9C3B1A','#C2762B','#A8451E'];
+  var W=0,H=0,dpr=1,items=[],active=false,raf=0,last=0;
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=innerWidth;H=innerHeight;
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function make(first){
+    if(winter){
+      var big=Math.random()<.55;
+      return {
+        x:rnd(-20,W+20), y:first?-rnd(20,H*1.1):-rnd(30,90),
+        s:big?rnd(.8,1.5):rnd(.22,.45), big:big, vy:rnd(22,44), amp:rnd(10,30), f:rnd(.35,.8), ph:rnd(0,6.28),
+        r:rnd(0,6.28), vr:rnd(-.5,.5), a:rnd(.8,1), t:0
+      };
+    }
+    return {
+      x:rnd(-20,W+20), y:first?-rnd(20,H*1.1):-rnd(30,90),
+      s:rnd(.2,.36), vy:rnd(28,52), amp:rnd(18,46), f:rnd(.5,1.1), ph:rnd(0,6.28),
+      r:rnd(0,6.28), vr:rnd(-.9,.9), fl:rnd(0,6.28), vf:rnd(.8,2),
+      c:cols[(Math.random()*cols.length)|0], a:rnd(.78,.95), t:0
+    };
+  }
+  function start(){
+    if(reduce||active)return;
+    active=true;
+    if(!items.length){var n=winter?Math.max(26,Math.min(48,Math.round(W/14))):Math.max(12,Math.min(24,Math.round(W/28)));for(var k=0;k<n;k++)items.push(make(true))}
+    if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}
+  }
+  function stop(){active=false}
+  function tick(now){
+    var dt=Math.min((now-last)/1000,.05);last=now;
+    ctx.clearRect(0,0,W,H);
+    for(var i=items.length-1;i>=0;i--){
+      var L=items[i];
+      L.t+=dt;L.y+=L.vy*dt;L.r+=L.vr*dt;L.fl+=L.vf*dt;
+      var x=L.x+Math.sin(L.t*L.f+L.ph)*L.amp;
+      if(L.y>H+70){
+        if(active){items[i]=make(false)}else{items.splice(i,1)}
+        continue;
+      }
+      if(winter){
+        ctx.save();ctx.translate(x,L.y);ctx.globalAlpha=L.a;
+        if(L.big){
+          ctx.rotate(L.r);ctx.scale(L.s,L.s);ctx.lineCap='round';
+          ctx.strokeStyle='rgba(110,150,195,.85)';ctx.lineWidth=3.4/L.s;ctx.stroke(flake);
+          ctx.strokeStyle='#FFFFFF';ctx.lineWidth=1.7/L.s;ctx.stroke(flake);
+        }else{
+          ctx.beginPath();ctx.arc(0,0,L.s*10,0,6.2832);
+          ctx.fillStyle='#FFFFFF';ctx.fill();
+          ctx.strokeStyle='rgba(110,150,195,.7)';ctx.lineWidth=1;ctx.stroke();
+        }
+        ctx.restore();continue;
+      }
+      ctx.save();
+      ctx.translate(x,L.y);ctx.rotate(L.r);
+      ctx.scale(L.s*(.35+.65*Math.abs(Math.cos(L.fl))),L.s);
+      ctx.globalAlpha=L.a;ctx.fillStyle=L.c;ctx.fill(leaf);
+      ctx.globalAlpha=L.a*.55;ctx.strokeStyle='rgba(60,20,10,.7)';ctx.lineWidth=2.4;ctx.lineJoin='round';
+      ctx.beginPath();ctx.moveTo(0,-34);ctx.lineTo(0,62);ctx.stroke();
+      ctx.restore();
+    }
+    if(items.length||active){raf=requestAnimationFrame(tick)}else{raf=0;ctx.clearRect(0,0,W,H)}
+  }
+  size();addEventListener('resize',size);
+  new MutationObserver(function(){music.classList.contains('on')?start():stop()}).observe(music,{attributes:true,attributeFilter:['class']});
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){if(raf){cancelAnimationFrame(raf);raf=0}}
+    else if(items.length&&!raf){last=performance.now();raf=requestAnimationFrame(tick)}
+  });
+})();
+</script>
+<script>if(window.__ny){var t=document.getElementById("nytxt");if(t)t.textContent="С Новым годом!"}</script>
+<script>
+/* установка на рабочий стол */
+(function(){
+  var btn=document.getElementById('savecard'), dlg=document.getElementById('inst'),
+      how=document.getElementById('how'), ev=null;
+  var standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+  if(standalone)return;
+  btn.hidden=false;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();ev=e});
+  window.addEventListener('appinstalled',function(){btn.hidden=true;ev=null});
+  var ua=navigator.userAgent, ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  function steps(list){how.innerHTML=list.map(function(t){return '<li>'+t+'</li>'}).join('')}
+  btn.addEventListener('click',function(){
+    if(ev){ev.prompt();ev.userChoice.then(function(){ev=null});return}
+    if(ios){
+      steps(['Откройте эту страницу в <b>Safari</b>.','Нажмите кнопку <b>«Поделиться»</b> (квадрат со стрелкой внизу экрана).','Выберите <b>«На экран “Домой”»</b> и нажмите <b>«Добавить»</b>.']);
+    }else{
+      steps(['Откройте меню браузера (три точки справа вверху).','Выберите <b>«Установить приложение»</b> или <b>«Добавить на главный экран»</b>.','Подтвердите. Иконка появится на рабочем столе.']);
+    }
+    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+  });
+  document.getElementById('inst-x').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+})();
+</script>
+<script>
+/* поделиться визиткой */
+(function(){
+  var b=document.getElementById('sharecard'), lab=document.getElementById('sharelab'), t=null;
+  var URL_='https://tamara-neplyaha.github.io/vizitka-nikolai/';
+  function done(msg){lab.textContent=msg;clearTimeout(t);t=setTimeout(function(){lab.textContent='Поделиться'},2200)}
+  function copy(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(URL_).then(function(){done('Ссылка скопирована')},function(){fallback()});
+    }else fallback();
+  }
+  function fallback(){
+    var a=document.createElement('textarea');a.value=URL_;a.setAttribute('readonly','');a.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(a);a.select();
+    try{document.execCommand('copy');done('Ссылка скопирована')}catch(e){done('Не вышло')}
+    document.body.removeChild(a);
+  }
+  b.addEventListener('click',function(){
+    if(navigator.share){
+      navigator.share({title:'Электронная визитка под ключ',text:'Электронная визитка: ссылка, QR-код и все контакты в одном месте.',url:URL_}).catch(function(e){if(e&&e.name!=='AbortError')copy()});
+    }else copy();
+  });
+})();
+</script>
+</body>
+</html>
