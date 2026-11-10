@@ -24,7 +24,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* Палитра: меняется здесь, в одном месте */
 :root{
@@ -220,8 +220,8 @@ details.more summary::after{content:"";position:absolute;top:-10%;bottom:-10%;le
 .flow li{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;font-size:12.5px;font-weight:600;line-height:1.3;padding:14px 6px 12px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
 .flow svg{width:26px;height:26px;fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .flow li:not(:last-child)::after{content:"\203A";position:absolute;right:-13px;top:50%;width:12px;margin-top:-11px;text-align:center;font:600 22px/1 "Cormorant Garamond",Georgia,serif;color:var(--brass)}
-.appnote{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;line-height:1.4;text-align:center}
-.appnote svg{flex:none;width:16px;height:16px;fill:none;stroke:var(--brass);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.appnote{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:16px;line-height:1.4;text-align:center}
+.appnote svg{flex:none;width:22px;height:22px;fill:none;stroke:var(--brass);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .examples .example:not(.vipex){display:flex;align-items:center;justify-content:center;width:100%;max-width:340px;min-height:52px;margin-top:22px;padding:0 22px;border-radius:999px;background:var(--green);color:var(--green-ink);text-decoration:none;font-size:16px}
 .examples .vipex{justify-content:center;min-height:48px;padding:0 20px;border:1.5px solid var(--brass);border-radius:999px;text-decoration:none}
 
@@ -258,6 +258,25 @@ html{scroll-behavior:smooth}
 
 /* главная строка у кнопки заказа */
 .ordline{margin-top:10px;color:var(--ink);font-weight:700;font-size:14px;line-height:1.3;text-align:center}
+
+/* золотая строка вверху и значки в «Без сюрпризов» */
+.lead.gold{margin-top:16px;color:var(--brass);font-weight:600;font-size:16px;line-height:1.5}
+.facts svg{display:block;width:26px;height:26px;margin:0 auto 8px;fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nosurp{margin-top:28px}
+/* заголовок: спокойная классика, тонкий золотой акцент */
+h1{text-align:center;font-weight:500;font-size:clamp(32px,10.5vw,42px);line-height:1.08;letter-spacing:.005em}
+h1 em{font-style:italic;font-weight:500;color:var(--brass)}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px;width:150px;margin:18px auto 0}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--brass))}
+.orn::after{transform:scaleX(-1)}
+.orn i{width:6px;height:6px;background:var(--brass);transform:rotate(45deg)}
+.lead.gold{text-align:center;margin:16px auto 0;max-width:380px;font-size:18px;text-wrap:balance}
+/* плашки примеров: мерцание и блик, как у «Полного описания» */
+.examples .example:not(.order),.plans .example.vipex{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,rgba(166,138,91,.14),rgba(166,138,91,.03) 55%,rgba(166,138,91,.12));animation:moreGlow 3.8s ease-in-out infinite}
+.examples .example:not(.order)::after,.plans .example.vipex::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-45%;width:34%;background:linear-gradient(100deg,transparent,rgba(255,243,214,.7),transparent);transform:skewX(-20deg);animation:moreShine 4.6s ease-in-out infinite;pointer-events:none;z-index:-1}
+.plans .example.vipex,.plans .example.vipex::after{animation-delay:1.4s}
+@media (prefers-color-scheme:dark){.examples .example:not(.order)::after,.plans .example.vipex::after{background:linear-gradient(100deg,transparent,rgba(240,215,160,.32),transparent)}}
+@media (prefers-reduced-motion:reduce){.examples .example:not(.order),.plans .example.vipex,.examples .example:not(.order)::after,.plans .example.vipex::after{animation:none}}
 </style>
 <script>
 /* Сезон: зима с 1 декабря по 10 января включительно, в остальное время осень.
@@ -313,8 +332,9 @@ html{scroll-behavior:smooth}
 <main class="wrap">
 
   <p class="ny"><span aria-hidden="true">❄</span><b id="nytxt">С наступающим<br>Новым годом!</b><span aria-hidden="true">❄</span></p>
-  <h1>Новый формат для вашего бизнеса</h1>
-  <p class="lead">Электронная визитка: все ваши контакты в одной ссылке и в одном QR-коде. Клиент сохраняет вас в телефон одним касанием и больше не теряет.</p>
+  <h1>Новый формат<br><em>для вашего бизнеса</em></h1>
+  <div class="orn" aria-hidden="true"><i></i></div>
+  <p class="lead gold">Все ваши контакты, соцсети, сайты, фото, отзывы в одной визитке</p>
 
   <div class="stage" aria-hidden="true">
     <div class="phone"><svg class="hat" viewBox="0 0 100 100" aria-hidden="true">
@@ -340,19 +360,19 @@ html{scroll-behavior:smooth}
 
   <div class="examples">
     <a class="example order" href="#plans">Заказать визитку</a>
-    <p class="ordline">Готова за 3 дня · от 2 400 ₽ один раз</p>
     <a class="example" href="https://tamara-neplyaha.github.io/">Посмотреть живой пример</a>
     <p class="excap">Это рабочая визитка агента по недвижимости: откройте и попробуйте нажать на кнопки</p>
   </div>
 
-  <p class="forwho">Для тех, кто работает с людьми и ведёт бизнес: эксперты, мастера, специалисты, предприниматели</p>
-
-  <ol class="flow" aria-label="Как это работает">
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM17 20h4M20 17v3"/></svg>Навели камеру на QR или приложили телефон</li>
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Открылась ваша визитка</li>
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Звонок, сообщение, контакт в телефон</li>
-  </ol>
-  <p class="appnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>Визитку можно поставить на экран телефона: она откроется как приложение</p>
+  <section class="nosurp">
+    <h2>Без сюрпризов</h2>
+    <ul class="facts">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><b>Оплата один раз</b>без подписок и ежемесячных платежей</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><b>3 дня</b>и визитка готова</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4L16.5 4.5a2 2 0 0 1 3 3L8 19z"/><path d="M14.5 6.5l3 3"/></svg><b>Правки</b>вносим по вашему запросу</li>
+    </ul>
+  </section>
+  <p class="appnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>Визитку можно сохранить на экран телефона: она откроется как приложение</p>
 
   <section>
     <h2>Зачем это вам</h2>
@@ -384,18 +404,9 @@ html{scroll-behavior:smooth}
   </section>
 
   <section>
-    <h2>Без сюрпризов</h2>
-    <ul class="facts">
-      <li><b>Оплата один раз</b>без подписок и ежемесячных платежей</li>
-      <li><b>3 дня</b>и визитка готова</li>
-      <li><b>Правки</b>вносим по вашему запросу</li>
-    </ul>
-  </section>
-
-  <section>
     <h2>Как заказать</h2>
     <ol class="steps">
-      <li>Напишите мне в Telegram или WhatsApp</li>
+      <li>Выберите вариант и заполните заявку</li>
       <li>Пришлите фото, контакты и ссылки</li>
       <li>Получите ссылку и QR-код за 3 дня</li>
     </ol>
