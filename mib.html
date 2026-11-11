@@ -3,12 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Тамара Непляха — агент по недвижимости в Краснодаре</title>
+<title>Досье агента Т. — Тамара Непляха, агент по недвижимости в Краснодаре</title>
 <meta name="theme-color" content="#000000">
 <meta name="description" content="Агент по недвижимости в Краснодаре. В недвижимости с 2014 года. Нажмите, чтобы открыть досье: позвонить, написать, посмотреть объекты.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Тамара Непляха — агент по недвижимости в Краснодаре">
+<meta property="og:title" content="Досье агента Т. — Тамара Непляха, агент по недвижимости">
 <meta property="og:description" content="Нажмите, чтобы открыть досье: позвонить, написать, посмотреть объекты.">
+<meta property="og:url" content="https://tamara-neplyaha.github.io/mib.html">
+<meta property="og:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=1">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Чёрные очки и надпись «Досье агента Т.»">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
@@ -121,17 +129,48 @@ h3{font-weight:800;font-size:18px;margin:26px 0 6px}
 .snd:not(.used)::after{content:"";position:absolute;inset:-6px;border:1px solid var(--fg);border-radius:50%;animation:ring 2s ease-out infinite}
 @keyframes ring{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.35);opacity:0}}
 .snd:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+.gate{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;width:100%;padding:24px;border:0;border-radius:0;background:radial-gradient(90% 60% at 50% 35%,#1b1b1e 0%,#000 70%);color:var(--fg);font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gate[hidden]{display:none}
+.gate span{display:block}
+.gate svg.gl{width:220px;height:110px;margin-bottom:-6px}
+.gate .g1{font-size:12px;line-height:1.7;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.gate .g2{font:800 32px/1.1 "Manrope",system-ui,sans-serif;letter-spacing:-.01em}
+.gate .g3{margin-top:4px;padding:13px 20px;border:1px solid var(--fg);font-size:12px;letter-spacing:.16em;text-transform:uppercase;animation:gblink 1.6s ease-in-out infinite}
+@keyframes gblink{50%{opacity:.35}}
+.gate .g1,.gate .g2{white-space:pre-line}
+.gate .tp,.gate .gh{font-style:normal}
+.gate .gh{visibility:hidden}
+.gate.typing .g3{visibility:hidden;animation:none}
+.gate .act .tp::after{content:"\258C";margin-left:1px;animation:gblink .6s steps(1) infinite}
+
+html.gated{overflow:hidden}
 .tie{display:block;margin:30px auto 10px;width:14px;height:60px;background:linear-gradient(#fff,#d8d8d8);clip-path:polygon(25% 0,75% 0,60% 14%,100% 100%,50% 92%,0 100%,40% 14%)}
 .foot{text-align:center;margin:0;color:var(--mute);font-size:13px}
 .flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:99}
 .flash.go{animation:fl 1s ease-out}
 @keyframes fl{0%{opacity:0}8%{opacity:1}30%{opacity:1}100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.photo::after{animation:none;display:none}.pugcard svg.pug{animation:none}.snd:not(.used)::after{animation:none}.flash.go{animation:fl 1s linear}}
+@media (prefers-reduced-motion:reduce){.photo::after{animation:none;display:none}.pugcard svg.pug{animation:none}.snd:not(.used)::after{animation:none}.gate .g3{animation:none}.flash.go{animation:fl 1s linear}}
 </style>
 </head>
 <body>
 <div class="flash" id="flash" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
+<button class="gate" id="gate" type="button" hidden aria-label="Войти в досье">
+  <svg class="gl" viewBox="0 0 200 100" aria-hidden="true">
+    <defs><linearGradient id="ggl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34343a"/><stop offset=".55" stop-color="#0a0a0c"/><stop offset="1" stop-color="#000"/></linearGradient></defs>
+    <path d="M24 36H90C90 60 80 74 62 74H50C34 74 26 62 24 36Z" fill="url(#ggl)" stroke="#f2f2ee" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M110 36H176C174 62 166 74 150 74H138C120 74 110 60 110 36Z" fill="url(#ggl)" stroke="#f2f2ee" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="14" y="27" width="82" height="10" rx="5" fill="#f2f2ee"/>
+    <rect x="104" y="27" width="82" height="10" rx="5" fill="#f2f2ee"/>
+    <path d="M92 40Q100 31 108 40" fill="none" stroke="#f2f2ee" stroke-width="4" stroke-linecap="round"/>
+    <path d="M17 31L4 27M183 31L196 27" stroke="#f2f2ee" stroke-width="4" stroke-linecap="round"/>
+    <path d="M35 52L58 42M41 60L53 55M121 52L144 42M127 60L139 55" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+  </svg>
+  <span class="g1" data-t="Отдел недвижимости&#10;Ключи от Краснодара">Отдел недвижимости<br>Ключи от Краснодара</span>
+  <span class="g2" data-t="Досье агента Т.">Досье агента Т.</span>
+  <span class="g3">Коснитесь, чтобы войти</span>
+</button>
+<script>document.getElementById("gate").hidden=false;document.documentElement.classList.add("gated")</script>
 <main class="card" id="reviews">
   <a class="back" href="#home">← Назад в досье</a>
   <h2>Отзывы и кейсы</h2>
@@ -309,7 +348,7 @@ h3{font-weight:800;font-size:18px;margin:26px 0 6px}
   });
 })();
 </script>
-<audio id="aud" src="mib-music.mp3" loop preload="none"></audio>
+<audio id="aud" src="mib-music.mp3" loop preload="auto" playsinline></audio>
 <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Включить музыку">
   <svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
   <svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.500 8.500a5 5 0 0 1 0 7M19 6a8.500 8.500 0 0 1 0 12"/></svg>
@@ -322,21 +361,108 @@ h3{font-weight:800;font-size:18px;margin:26px 0 6px}
   /* музыка */
   var a=document.getElementById("aud"),s=document.getElementById("snd"),was=false;
   function set(on){s.setAttribute("aria-pressed",on?"true":"false");s.setAttribute("aria-label",on?"Выключить музыку":"Включить музыку")}
+  /* состояние берём из событий самого плеера, а не из a.paused:
+     пока запуск «висит» без разрешения браузера, a.paused уже false, и раньше это ломало первое касание */
+  var on=false;
+  a.addEventListener("playing",function(){on=true;set(true);s.classList.add("used");offGestures()});
+  a.addEventListener("pause",function(){on=false;set(false)});
+  function start(){
+    if(on)return;
+    a.volume=.55;
+    var p=a.play();
+    if(p&&p.catch){p.catch(function(){})}
+  }
   s.addEventListener("click",function(){
     s.classList.add("used");
-    if(a.paused){a.volume=.55;var p=a.play();if(p&&p.then){p.then(function(){set(true)}).catch(function(){set(false)})}else{set(true)}}
-    else{a.pause();set(false)}
+    if(on){a.pause()}else{start()}
   });
-  /* музыка стартует с первого касания в любом месте страницы */
-  function firstTap(e){
-    if(s.contains(e.target)||!a.paused){document.removeEventListener("click",firstTap,true);return}
-    a.volume=.55;var p=a.play();
-    if(p&&p.then){p.then(function(){set(true);s.classList.add("used");document.removeEventListener("click",firstTap,true)}).catch(function(){})}
+  /* музыка стартует с первого касания в любом месте страницы (любое касание, нажатие, клавиша);
+     слушаем несколько событий, потому что iPhone и Android засчитывают разные, и повторяем, пока звук не пошёл */
+  var evs=["pointerup","touchend","click","mousedown","keydown"];
+  function tap(e){
+    if(ac&&ac.state==="suspended"){try{ac.resume()}catch(x){}}
+    if(on)return;
+    if(e.target&&s.contains(e.target))return;
+    start();
   }
-  document.addEventListener("click",firstTap,true);
+  function offGestures(){for(var i=0;i<evs.length;i++){document.removeEventListener(evs[i],tap,true)}}
+  for(var k=0;k<evs.length;k++){document.addEventListener(evs[k],tap,{capture:true,passive:true})}
+  /* вход: очки и кнопка «Коснитесь». По касанию (или сразу, если звук уже идёт) текст досье
+     печатается, как на печатной машинке, со звуком клавиш, и открывается визитка */
+  var g=document.getElementById("gate"),fl=document.getElementById("flash");
+  var reduce=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches);
+  var ac=null,nb=null,typing=false,done=false,t0=0;
+  function getAC(){if(!ac){var C=window.AudioContext||window.webkitAudioContext;if(C){try{ac=new C()}catch(e){}}}return ac}
+  function unlock(){var c=getAC();if(c&&c.state==="suspended"){try{c.resume()}catch(e){}}}
+  function noise(c){
+    if(nb)return nb;
+    var n=(c.sampleRate*.05)|0;nb=c.createBuffer(1,n,c.sampleRate);var d=nb.getChannelData(0);
+    for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,3);
+    return nb;
+  }
+  function key(vol){
+    var c=ac;if(!c||c.state!=="running")return;
+    var t=c.currentTime,s=c.createBufferSource(),f=c.createBiquadFilter(),gn=c.createGain();
+    s.buffer=noise(c);s.playbackRate.value=.9+Math.random()*.3;
+    f.type="bandpass";f.frequency.value=1800+Math.random()*1400;f.Q.value=.9;
+    gn.gain.value=vol;s.connect(f);f.connect(gn);gn.connect(c.destination);s.start(t);
+    var o=c.createOscillator(),og=c.createGain();
+    o.type="triangle";o.frequency.setValueAtTime(170+Math.random()*30,t);o.frequency.exponentialRampToValueAtTime(60,t+.04);
+    og.gain.setValueAtTime(vol*.5,t);og.gain.exponentialRampToValueAtTime(.001,t+.05);
+    o.connect(og);og.connect(c.destination);o.start(t);o.stop(t+.06);
+  }
+  function zip(){for(var i=0;i<7;i++){(function(k){setTimeout(function(){key(.22)},k*22)})(i)}}
+  function bell(){
+    var c=ac;if(!c||c.state!=="running")return;
+    var t=c.currentTime,fr=[2350,3520];
+    for(var i=0;i<2;i++){
+      var o=c.createOscillator(),og=c.createGain();
+      o.type="sine";o.frequency.value=fr[i];
+      og.gain.setValueAtTime(i?.03:.07,t);og.gain.exponentialRampToValueAtTime(.001,t+.9);
+      o.connect(og);og.connect(c.destination);o.start(t);o.stop(t+.95);
+    }
+  }
+  var tw=[].slice.call(g.querySelectorAll("[data-t]"));
+  tw.forEach(function(el){
+    el.t=el.getAttribute("data-t");
+    el.innerHTML='<i class="tp"></i><i class="gh"></i>';
+    el.tp=el.firstChild;el.gh=el.lastChild;el.gh.textContent=el.t;
+  });
+  function finish(){
+    if(done)return;done=true;
+    fl.classList.remove("go");void fl.offsetWidth;fl.classList.add("go");
+    setTimeout(function(){g.hidden=true;document.documentElement.classList.remove("gated")},220);
+  }
+  function runIntro(){
+    if(typing)return;typing=true;t0=Date.now();
+    g.classList.add("typing");unlock();
+    if(reduce){finish();return}
+    var idx=0,pos=0;
+    function step(){
+      if(done)return;
+      var el=tw[idx];
+      if(!el){setTimeout(finish,800);return}
+      el.classList.add("act");
+      if(pos>=el.t.length){el.classList.remove("act");idx++;pos=0;bell();setTimeout(step,420);return}
+      var ch=el.t.charAt(pos++);
+      el.tp.textContent=el.t.slice(0,pos);el.gh.textContent=el.t.slice(pos);
+      if(ch==="\n")zip();else if(ch!==" ")key(.4);
+      setTimeout(step,ch==="\n"?280:(ch===" "?80:40+Math.random()*55));
+    }
+    setTimeout(step,350);
+  }
+  g.addEventListener("click",function(){
+    unlock();
+    if(!typing){start();runIntro()}
+    else if(Date.now()-t0>700){finish()}
+  });
+  a.addEventListener("playing",function(){if(!typing&&!g.hidden)runIntro()});
+  a.volume=.55;
+  var p0=a.play();
+  if(p0&&p0.catch){p0.catch(function(){})}
   document.addEventListener("visibilitychange",function(){
-    if(document.hidden){was=!a.paused;if(was){a.pause()}}
-    else if(was){var p=a.play();if(p&&p.catch){p.catch(function(){set(false)})}was=false}
+    if(document.hidden){was=on;if(was){a.pause()}}
+    else if(was){start();was=false}
   });
 
   /* анимация: падающие очки, звёзды и редкая тарелка */
