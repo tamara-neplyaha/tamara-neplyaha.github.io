@@ -73,6 +73,10 @@ h1{font-weight:800;font-size:32px;line-height:1.08;letter-spacing:-.02em;margin:
 #reviews{display:none}
 #reviews:target{display:block}
 #reviews:target ~ #home{display:none}
+.xback{display:inline-flex;align-items:center;margin:0 0 14px;padding:9px 14px;border:1px solid var(--fg);color:var(--fg);text-decoration:none;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.6)}
+.xback[hidden]{display:none}
+.xback:hover{background:#1b1b1d}
+.xback:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 .back{display:inline-block;margin:0 0 18px;padding:6px 0;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
 .back:hover{color:var(--fg)}
 .back:focus-visible,.tab:focus-visible,.more-btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
@@ -196,6 +200,7 @@ h3{font-weight:800;font-size:18px;margin:26px 0 6px}
   <p class="foot">Ключи от Краснодара с Тамарой</p>
 </main>
 <main class="card" id="home">
+  <a class="xback mono" id="xback" href="https://tamara-neplyaha.github.io/vizitka-nikolai/" hidden>← К заказу визиток</a>
   <div class="top mono">
     <b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9c0-1 1-2 2-2h6c1 0 2 .6 2 1.5V9h2v-.5C14 7.600 15 7 16 7h4c1 0 2 1 2 2v1.500c0 3-2 4.500-4.500 4.500-2 0-3.300-1-3.800-2.500h-1.400C12.800 14 11.500 15 9.500 15 6.500 15 4.500 13.500 4 11z"/></svg><span class="bt"><span>Отдел недвижимости</span><span class="bt2">Ключи от Краснодара</span></span></b>
     <span class="stamp">Секретно</span>
@@ -311,6 +316,9 @@ h3{font-weight:800;font-size:18px;margin:26px 0 6px}
 </button>
 <script>
 (function(){
+  /* кнопка возврата к странице заказа, если пришли оттуда */
+  (function(){var r=document.referrer||"",x=document.getElementById("xback");
+    if(x&&(/[?&]from=nikolai(&|$)/.test(location.search)||r.indexOf("https://tamara-neplyaha.github.io/vizitka-nikolai/")===0))x.hidden=false})();
   /* музыка */
   var a=document.getElementById("aud"),s=document.getElementById("snd"),was=false;
   function set(on){s.setAttribute("aria-pressed",on?"true":"false");s.setAttribute("aria-label",on?"Выключить музыку":"Включить музыку")}
