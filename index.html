@@ -140,6 +140,18 @@ label.btn,.back,.cancel,.sheet-bg{cursor:pointer}
 .steps li{counter-increment:st;position:relative;padding:0 0 12px 38px;font-size:15px;line-height:1.5}
 .steps li::before{content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--terra);color:var(--on-terra);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
 .inst-note{margin:0;font-size:13px;line-height:1.45;color:var(--muted)}
+
+/* плашка «Заказать визитку себе» */
+.order{position:relative;display:flex;width:fit-content;max-width:100%;align-items:center;gap:6px;margin:16px auto 6px;padding:11px 22px;border:1px solid var(--terra);border-radius:999px;color:var(--terra-deep);font-size:14.5px;font-weight:600;line-height:1.2;text-decoration:none;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.order svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.order::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,color-mix(in srgb,var(--terra) 30%,transparent) 50%,transparent 70%);transform:translateX(-120%)}
+.order:hover{background-color:var(--sand)}
+.order:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+@keyframes orderglow{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--terra) 0%,transparent)}45%{box-shadow:0 0 0 5px color-mix(in srgb,var(--terra) 16%,transparent),0 0 18px color-mix(in srgb,var(--terra) 32%,transparent)}}
+@keyframes ordershine{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+.order.nudge-on{animation:orderglow 1.8s ease-in-out 1}
+.order.nudge-on::after{animation:ordershine 1.6s ease-in-out .15s 1}
+@media (prefers-reduced-motion:reduce){.order.nudge-on,.order.nudge-on::after{animation:none}}
 </style>
 </head>
 <body>
@@ -201,7 +213,10 @@ label.btn,.back,.cancel,.sheet-bg{cursor:pointer}
     </label>
   </nav>
   <p class="foot">Ключи от Краснодара с Тамарой</p>
-  <a class="want" href="https://tamara-neplyaha.github.io/vizitka-nikolai/?v=1&amp;from=tamara" target="_blank" rel="noopener">Хочу такую визитку</a>
+  <a class="order" id="orderLink" href="https://tamara-neplyaha.github.io/vizitka-nikolai/?v=1&amp;from=tamara" target="_blank" rel="noopener">Заказать визитку себе<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+  <script>(function(){var a=document.getElementById('orderLink');if(!a)return;var done=false;function go(){if(done)return;done=true;a.classList.add('nudge-on');}
+var t=setTimeout(go,9000);
+if('IntersectionObserver' in window){var w=null,io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){clearTimeout(w);w=setTimeout(function(){clearTimeout(t);go();io.disconnect();},900);}else clearTimeout(w);});},{threshold:.9});io.observe(a);}})();</script>
 </main>
 <main class="card" id="reviews">
   <label class="back" for="t-rev">← Назад</label>

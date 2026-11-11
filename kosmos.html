@@ -188,6 +188,8 @@ html.space::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:non
 .p-jupiter .surf{background-image:radial-gradient(ellipse 19% 9% at 58% 64%,#ff8bbd 0 28%,#c63d82 62%,transparent 72%),repeating-linear-gradient(180deg,#9a5bd9 0 8%,#6c35b0 8% 13%,#c58be8 13% 20%,#5a2a98 20% 24%,#b476e0 24% 31%,#7b46c2 31% 36%)}
 .p-venus{--base:#d79a2e;--glow:rgba(255,200,80,.5);--spin:80s}
 .p-venus .surf{background-image:radial-gradient(ellipse 34% 6% at 36% 24%,rgba(255,236,170,.55),transparent 72%),radial-gradient(ellipse 30% 7% at 66% 44%,rgba(150,80,10,.4),transparent 72%),radial-gradient(ellipse 36% 6% at 40% 66%,rgba(255,236,170,.5),transparent 72%),radial-gradient(ellipse 28% 5% at 70% 84%,rgba(150,80,10,.35),transparent 72%)}
+.p-order{--base:#2f8f6b;--glow:rgba(110,230,170,.5);--spin:90s}
+.p-order .surf{background-image:radial-gradient(ellipse 30% 6% at 36% 30%,rgba(235,255,240,.5),transparent 72%),radial-gradient(ellipse 28% 7% at 64% 60%,rgba(10,60,40,.45),transparent 72%),repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 10%,rgba(210,255,230,.2) 12% 17%,rgba(0,70,45,.25) 19% 24%,rgba(255,255,255,0) 26% 36%)}
 
 /* ============ ТОЧКИ И СТРЕЛКИ ============ */
 .dots{display:flex;align-items:center;justify-content:center;gap:2px;margin:8px 0 2px}
@@ -243,6 +245,12 @@ html.bursting .stage{opacity:0}
 .bh-t{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);width:max-content;max-width:118px;text-align:center;font-weight:700;font-size:13px;line-height:1.2;text-shadow:0 1px 6px rgba(0,0,0,.95),0 0 2px #000}
 .burst-hint{position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom,0px));text-align:center;font-size:13px;color:var(--muted);margin:0;text-shadow:0 1px 4px #000}
 @media (prefers-reduced-motion:reduce){.swipe .nudge,.sphere .surf,.bh .halo,.burst-lines .fl{animation:none}.burst-core,.kid{transition:none}}
+
+/* всё помещается на один экран */
+.facts{margin-bottom:14px}
+.foot{margin-top:12px;margin-bottom:0}
+.card{padding-bottom:18px}
+@media (max-height:780px){.about{margin-bottom:14px}.swipe{margin-bottom:12px}.facts{margin-bottom:10px}.foot{margin-top:8px}.card{padding-top:30px;padding-bottom:12px}}
 </style>
 </head>
 <body>
@@ -292,10 +300,14 @@ html.bursting .stage{opacity:0}
       <span class="sphere"><span class="surf"></span></span>
       <span class="ptxt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><b>Отзывы и кейсы</b><small>Истории клиентов</small></span>
     </label></div>
+    <div class="item"><a class="pl p-order" href="https://tamara-neplyaha.github.io/vizitka-nikolai/?v=1&amp;from=vip" target="_blank" rel="noopener" aria-label="Заказать визитку себе">
+      <span class="sphere"><span class="surf"></span></span>
+      <span class="ptxt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2"/><path d="M13 10h5M13 14h4M6 16.2c.6-1.3 1.6-1.8 2.5-1.8s1.9.5 2.5 1.8"/></svg><b>Заказать визитку себе</b><small>Сделаю в ваших цветах</small></span>
+    </a></div>
   </div>
   <div class="dots" id="dots">
     <button class="arrow" id="prev" type="button" aria-label="Назад"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <button class="dot" type="button" data-i="0" aria-label="Слайд 1 из 8"></button><button class="dot" type="button" data-i="1" aria-label="Слайд 2 из 8"></button><button class="dot" type="button" data-i="2" aria-label="Слайд 3 из 8"></button><button class="dot" type="button" data-i="3" aria-label="Слайд 4 из 8"></button><button class="dot" type="button" data-i="4" aria-label="Слайд 5 из 8"></button><button class="dot" type="button" data-i="5" aria-label="Слайд 6 из 8"></button><button class="dot" type="button" data-i="6" aria-label="Слайд 7 из 8"></button><button class="dot" type="button" data-i="7" aria-label="Слайд 8 из 8"></button>
+    <button class="dot" type="button" data-i="0" aria-label="Слайд 1 из 9"></button><button class="dot" type="button" data-i="1" aria-label="Слайд 2 из 9"></button><button class="dot" type="button" data-i="2" aria-label="Слайд 3 из 9"></button><button class="dot" type="button" data-i="3" aria-label="Слайд 4 из 9"></button><button class="dot" type="button" data-i="4" aria-label="Слайд 5 из 9"></button><button class="dot" type="button" data-i="5" aria-label="Слайд 6 из 9"></button><button class="dot" type="button" data-i="6" aria-label="Слайд 7 из 9"></button><button class="dot" type="button" data-i="7" aria-label="Слайд 8 из 9"></button><button class="dot" type="button" data-i="8" aria-label="Слайд 9 из 9"></button>
     <button class="arrow" id="next" type="button" aria-label="Дальше"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
   <p class="hint swipe"><span class="nudge l" aria-hidden="true">←</span>Листайте по кругу<span class="nudge" aria-hidden="true">→</span></p>
@@ -309,7 +321,6 @@ html.bursting .stage{opacity:0}
     <div><b>Две стороны рынка</b>работала в агентстве и у застройщика</div>
   </div>
   <p class="foot">Ключи от Краснодара с Тамарой</p>
-  <a class="want" href="https://tamara-neplyaha.github.io/vizitka-nikolai/?v=1&amp;from=vip" target="_blank" rel="noopener">Хочу такую визитку</a>
 </main>
 <main class="card" id="reviews">
   <label class="back" for="t-rev">← Назад</label>
