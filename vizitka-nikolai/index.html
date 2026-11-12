@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Электронная визитка под ключ — Николай</title>
 <meta name="description" content="Электронная визитка: ссылка, QR-код и все ваши контакты в одном месте. Закажите в личных сообщениях.">
-<meta property="og:title" content="Новый формат для вашего бизнеса">
-<meta property="og:description" content="Электронная визитка: контакты, QR-код и ссылка в одном касании. Нажмите, чтобы посмотреть, как это работает.">
+<meta property="og:title" content="У других бумажка. У вас — касание">
+<meta property="og:description" content="Электронная визитка, после которой вас запоминают. Нажмите, чтобы посмотреть, как это работает.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:url" content="https://tamara-neplyaha.github.io/vizitka-nikolai/">
-<meta property="og:image" content="https://tamara-neplyaha.github.io/vizitka-nikolai/preview.jpg?v=4">
+<meta property="og:image" content="https://tamara-neplyaha.github.io/vizitka-nikolai/preview.jpg?v=5">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -292,6 +292,33 @@ html.pick-open{overflow:hidden}
 .pick span{display:block;margin-top:4px;color:var(--muted);font-size:13.5px;line-height:1.4}
 .pick-close{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:14px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--muted);font:600 15px/1 Manrope,"Segoe UI",system-ui,sans-serif;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.pick-box{animation:none}}
+
+/* касание NFC-брелоком: экран «просыпается» и запускается видео */
+.stage{overflow-x:clip}
+.phone{cursor:pointer}
+.screen.demoscr{position:relative}
+.wake{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:#15100D;opacity:0;pointer-events:none;line-height:0}
+.wake svg{width:46px;height:46px;fill:none;stroke:#C2A56F;stroke-width:1.6;stroke-linecap:round}
+.tap-pre .wake{opacity:1}
+.tap-on .wake{animation:wakeFade 4.4s ease both}
+@keyframes wakeFade{0%,33%{opacity:1}45%,100%{opacity:0}}
+.tap-ring{position:absolute;left:10px;top:10px;width:24px;height:24px;margin:-12px 0 0 -12px;border:2px solid #C2A56F;border-radius:50%;opacity:0;pointer-events:none;z-index:3}
+.tap-on .tap-ring{animation:tapRing 1.4s ease-out both;animation-delay:calc(1.45s + var(--d,0s))}
+@keyframes tapRing{0%{transform:scale(.4);opacity:.9}100%{transform:scale(6);opacity:0}}
+.tap-hand{position:absolute;left:-106px;top:-10px;width:150px;height:auto;opacity:0;pointer-events:none;z-index:4;filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}
+.tap-on .tap-hand{animation:handGo 4.4s both}
+@keyframes handGo{
+  0%,8%{transform:translate(-110px,130px) rotate(-6deg);opacity:0;animation-timing-function:cubic-bezier(.2,.7,.3,1)}
+  14%{opacity:1}
+  33%{transform:translate(0,0) rotate(0);opacity:1}
+  38%{transform:translate(2px,-2px) scale(.98)}
+  44%,52%{transform:translate(0,0) rotate(0);opacity:1;animation-timing-function:ease-in}
+  73%,100%{transform:translate(-110px,130px) rotate(-6deg);opacity:0}
+}
+.tapcap{margin-top:14px;text-align:center;color:var(--brass);font:600 15px/1.4 Manrope,"Segoe UI",system-ui,sans-serif}
+.stage.tap-pre+.tapcap{opacity:0}
+.stage.tap-on+.tapcap{animation:capIn 4.4s ease both}
+@keyframes capIn{0%,40%{opacity:0;transform:translateY(6px)}55%,100%{opacity:1;transform:none}}
 </style>
 <script>
 /* Сезон: зима с 1 декабря по 10 января включительно, в остальное время осень.
@@ -349,7 +376,7 @@ html.pick-open{overflow:hidden}
   <p class="ny"><span aria-hidden="true">❄</span><b id="nytxt">С наступающим<br>Новым годом!</b><span aria-hidden="true">❄</span></p>
   <h1>Новый формат<br><em>для вашего бизнеса</em></h1>
   <div class="orn" aria-hidden="true"><i></i></div>
-  <p class="lead gold">Все ваши контакты, соцсети, сайты, фото, отзывы в одной визитке</p>
+  <p class="lead gold">Бумажную визитку теряют. Эту сохраняют</p>
 
   <div class="stage" aria-hidden="true">
     <div class="phone"><svg class="hat" viewBox="0 0 100 100" aria-hidden="true">
@@ -369,9 +396,35 @@ html.pick-open{overflow:hidden}
         </g>
         <path d="M14 82C30 86 70 86 90 82" stroke="#C9D5E0" stroke-opacity=".7" stroke-width="1.6" fill="none" stroke-linecap="round"/>
       </svg><div class="screen demoscr">
-      <video class="demo" id="demo" muted loop autoplay playsinline preload="auto" poster="demo-dark-poster.jpg" width="390" height="720"><source src="demo-dark.mp4" type="video/mp4"></video>
-    </div></div>
+      <video class="demo" id="demo" muted loop autoplay playsinline preload="auto" poster="demo-dark-poster.jpg" width="390" height="720"><source src="demo-dark.mp4" type="video/mp4"></video><div class="wake" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 8a6 6 0 0 1 0 8M12.5 5.5a10 10 0 0 1 0 13M16 3a14 14 0 0 1 0 18"/></svg></div>
+    </div>
+    <i class="tap-ring"></i><i class="tap-ring" style="--d:.18s"></i><i class="tap-ring" style="--d:.36s"></i>
+    <svg class="tap-hand" viewBox="-90 6 210 210" aria-hidden="true">
+      <defs>
+        <linearGradient id="skinG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5D9C3"/><stop offset="1" stop-color="#DFB295"/></linearGradient>
+        <linearGradient id="tagG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9C08A"/><stop offset="1" stop-color="#A68A5B"/></linearGradient>
+      </defs>
+      <g transform="rotate(38 70 34)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M47 148L42 214H102L97 148Z" fill="url(#skinG)" stroke="#C99573" stroke-width="1.2"/>
+        <rect x="36" y="180" width="72" height="40" rx="7" fill="#2E4A3E"/><rect x="36" y="180" width="72" height="3" fill="#A68A5B"/>
+        <path d="M42 120C40 101 50 90 65 90H88C101 90 107 102 105 121L99 156H49Z" fill="url(#skinG)" stroke="#C99573" stroke-width="1.2"/>
+        <rect x="86" y="92" width="29" height="16" rx="8" fill="url(#skinG)" stroke="#C99573" stroke-width="1.2"/>
+        <rect x="88" y="108" width="28" height="16" rx="8" fill="url(#skinG)" stroke="#C99573" stroke-width="1.2"/>
+        <rect x="87" y="124" width="25" height="15" rx="7.5" fill="url(#skinG)" stroke="#C99573" stroke-width="1.2"/>
+        <path d="M48 130C38 108 46 80 63 52" fill="none" stroke="#C99573" stroke-width="18"/>
+        <path d="M48 130C38 108 46 80 63 52" fill="none" stroke="url(#skinG)" stroke-width="15.5"/>
+        <circle cx="57" cy="16" r="7.5" fill="none" stroke="#C9CDD0" stroke-width="2.6"/>
+        <circle cx="70" cy="34" r="20" fill="url(#tagG)" stroke="#8A7048" stroke-width="1.2"/>
+        <circle cx="70" cy="34" r="15.5" fill="none" stroke="#F4E7C8" stroke-opacity=".7" stroke-width=".8"/>
+        <path d="M65 28a8 8 0 0 1 0 12M70 25a12 12 0 0 1 0 18" fill="none" stroke="#2A1E19" stroke-width="1.7"/>
+        <path d="M75 108C77 86 75 66 71 46" fill="none" stroke="#C99573" stroke-width="18.5"/>
+        <path d="M75 108C77 86 75 66 71 46" fill="none" stroke="url(#skinG)" stroke-width="16"/>
+        <ellipse cx="71" cy="53" rx="5.2" ry="7" fill="#F8E6D6" stroke="#E1B79A" stroke-width=".9"/>
+        <path d="M52 112C50 104 52 98 57 94" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+      </g>
+    </svg></div>
   </div>
+  <p class="tapcap" id="tapcap">Одно касание — и вы в телефоне клиента</p>
 
   <div class="examples">
     <a class="example order" href="#plans">Заказать визитку</a>
@@ -390,12 +443,12 @@ html.pick-open{overflow:hidden}
   <p class="appnote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>Визитку можно сохранить на экран телефона: она откроется как приложение</p>
 
   <section>
-    <h2>Зачем это вам</h2>
+    <h2>Чем вы выделитесь</h2>
     <ul class="perks">
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg>Вас сохраняют в телефон одним касанием</li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM17 20h4M20 17v3"/></svg>QR-код везде: на бумажной визитке, вывеске, в подписи</li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Без приложений: открывается на любом смартфоне</li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8c-3 0-5 2-5 4s2 4 5 4c4 0 6-8 10-8 3 0 5 2 5 4s-2 4-5 4c-4 0-6-8-10-8z"/></svg>Всегда актуально: обновили канал или сайт, и визитка ведёт на свежее</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg>Бумажную визитку выбрасывают, вашу сохраняют на экран телефона</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM17 20h4M20 17v3"/></svg>Другие диктуют номер, вам достаточно касания или QR-кода</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>У других «напишите мне», у вас сразу фото, работы и отзывы клиентов</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8c-3 0-5 2-5 4s2 4 5 4c4 0 6-8 10-8 3 0 5 2 5 4s-2 4-5 4c-4 0-6-8-10-8z"/></svg>Сменили сайт или канал: визитка обновилась, а QR и ссылка те же</li>
     </ul>
     <details class="more">
       <summary><span class="o">Полное описание</span><span class="c">Свернуть</span></summary>
@@ -430,26 +483,26 @@ html.pick-open{overflow:hidden}
   <section id="plans">
     <h2>Варианты</h2>
     <div class="plans">
-      <button type="button" class="plan" data-plan="Базовая" data-price="2 400 ₽" data-extra="">
-        <h3>Базовая <em>2 400 ₽</em></h3>
-        <p>Фото, описание, звонок, мессенджеры, сохранение в контакты, ссылка и QR-код.</p>
+      <button type="button" class="plan" data-plan="Старт" data-price="2 400 ₽" data-extra="">
+        <h3>Старт <em>2 400 ₽</em></h3>
+        <p><b>Вас находят и сохраняют.</b> Фото, описание, звонок, мессенджеры, сохранение в контакты, ссылка и QR-код.</p>
         <span class="pick">Оформить заявку</span>
       </button>
-      <button type="button" class="plan" data-plan="С отзывами и кейсами" data-price="2 700 ₽" data-extra="reviews">
-        <h3>С отзывами и кейсами <em>2 700 ₽</em></h3>
-        <p>Всё из базовой, плюс отзывы клиентов и истории работ, которые раскрываются по кнопке.</p>
+      <button type="button" class="plan" data-plan="Доверие" data-price="2 700 ₽" data-extra="reviews">
+        <h3>Доверие <em>2 700 ₽</em></h3>
+        <p><b>Вам верят ещё до разговора.</b> Всё из «Старта», плюс отзывы клиентов и истории работ, которые раскрываются по кнопке.</p>
         <span class="pick">Оформить заявку</span>
       </button>
-      <button type="button" class="plan main" data-plan="Всё включено" data-price="3 000 ₽" data-extra="reviews nfc">
+      <button type="button" class="plan main" data-plan="Статус" data-price="3 000 ₽" data-extra="reviews nfc">
         <span class="tag">Рекомендую</span>
-        <h3>Всё включено <em>3 000 ₽</em></h3>
-        <p>Всё из предыдущих, плюс сезонное оформление и NFC-метка: брелок или наклейка, которую достаточно приложить к телефону.</p>
+        <h3>Статус <em>3 000 ₽</em></h3>
+        <p><b>Вас запоминают.</b> Всё из предыдущих, плюс иконка с вашим фото или логотипом на экране телефона, сезонное оформление и NFC-метка: брелок или наклейка, которую достаточно приложить к телефону.</p>
         <span class="pick">Оформить заявку</span>
       </button>
       <a class="example vipex" href="https://tamara-neplyaha.github.io/kosmos.html?from=nikolai">Посмотреть VIP-пример <span class="vipbadge">VIP</span></a>
-      <button type="button" class="plan vip" data-plan="VIP" data-price="5 000 ₽" data-extra="reviews nfc vip">
-        <h3>VIP <em>5 000 ₽</em></h3>
-        <p>Визитка полностью по вашему дизайну. Учитываю все пожелания: стиль, цвета, оформление, детали. Всё из предыдущих вариантов, а фантазия ничем не ограничена.</p>
+      <button type="button" class="plan vip" data-plan="Авторская (VIP)" data-price="5 000 ₽" data-extra="reviews nfc vip">
+        <h3>Авторская <em>5 000 ₽</em></h3>
+        <p><b>Визитка, которой нет ни у кого.</b> Визитка полностью по вашему дизайну. Учитываю все пожелания: стиль, цвета, оформление, детали. Всё из предыдущих вариантов, а фантазия ничем не ограничена.</p>
         <span class="pick">Оформить заявку</span>
       </button>
     </div>
@@ -811,6 +864,31 @@ html.pick-open{overflow:hidden}
   var go=function(){var r=v.play();if(r&&r.catch)r.catch(function(){})};
   go();
   document.addEventListener('visibilitychange',function(){document.hidden?v.pause():go()});
+})();
+</script>
+<script>
+(function(){
+  var st=document.querySelector('.stage'),v=document.getElementById('demo');
+  if(!st||!v)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var t;
+  st.classList.add('tap-pre');
+  function run(){
+    clearTimeout(t);
+    st.classList.remove('tap-on');
+    void st.offsetWidth;
+    try{v.pause();v.currentTime=0}catch(e){}
+    st.classList.add('tap-on');
+    t=setTimeout(function(){var p=v.play();if(p&&p.catch)p.catch(function(){})},1600);
+  }
+  st.addEventListener('click',run);
+  if(!('IntersectionObserver' in window)){run();return}
+  var out=true;
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){if(out){out=false;run()}}else out=true;
+    });
+  },{threshold:.6}).observe(st);
 })();
 </script>
 <div class="pick-sheet" id="pickSheet" role="dialog" aria-modal="true" aria-labelledby="pickTitle" hidden>
