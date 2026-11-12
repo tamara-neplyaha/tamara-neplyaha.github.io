@@ -5,18 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Досье агента Т. — Тамара Непляха, агент по недвижимости в Краснодаре</title>
 <meta name="theme-color" content="#000000">
+<link rel="manifest" href="mib.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Тамара Непляха">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="Агент по недвижимости в Краснодаре. В недвижимости с 2014 года. Нажмите, чтобы открыть досье: позвонить, написать, посмотреть объекты.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Досье агента Т. — Тамара Непляха, агент по недвижимости">
 <meta property="og:description" content="Нажмите, чтобы открыть досье: позвонить, написать, посмотреть объекты.">
 <meta property="og:url" content="https://tamara-neplyaha.github.io/mib.html">
-<meta property="og:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=1">
+<meta property="og:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=2">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Чёрные очки и надпись «Досье агента Т.»">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=1">
+<meta name="twitter:image" content="https://tamara-neplyaha.github.io/mib-preview.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
@@ -85,6 +90,19 @@ h1{font-weight:800;font-size:32px;line-height:1.08;letter-spacing:-.02em;margin:
 .xback[hidden]{display:none}
 .xback:hover{background:#1b1b1d}
 .xback:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.util{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 14px}
+.ub{display:inline-flex;align-items:center;gap:7px;min-width:0;padding:9px 11px;border:1px solid var(--line);background:rgba(0,0,0,.6);color:var(--fg);font:500 11px "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ub[hidden]{display:none}
+.ub:hover{border-color:var(--fg);background:#1b1b1d}
+.ub:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.ub svg{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.72)}
+.sheet[hidden]{display:none}
+.sheet-box{width:100%;max-width:460px;background:#0b0b0c;border:1px solid var(--fg);padding:18px}
+.sheet-box b{display:block;margin:0 0 10px;font:500 13px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.sheet-box p{margin:0 0 16px;font-size:15px;line-height:1.5;color:#d8d8d4;word-break:break-word}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:90;padding:10px 16px;border:1px solid var(--fg);background:#000;color:var(--fg);font:500 12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.toast[hidden]{display:none}
 .back{display:inline-block;margin:0 0 18px;padding:6px 0;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
 .back:hover{color:var(--fg)}
 .back:focus-visible,.tab:focus-visible,.more-btn:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
@@ -240,6 +258,10 @@ html.gated{overflow:hidden}
 </main>
 <main class="card" id="home">
   <a class="xback mono" id="xback" href="https://tamara-neplyaha.github.io/vizitka-nikolai/" hidden>← К заказу визиток</a>
+  <div class="util mono">
+    <button class="ub" id="shareBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 12v7h14v-7"/></svg><span>Поделиться</span></button>
+    <button class="ub" id="saveBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M5 20h14"/></svg><span>Сохранить визитку</span></button>
+  </div>
   <div class="top mono">
     <b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9c0-1 1-2 2-2h6c1 0 2 .6 2 1.5V9h2v-.5C14 7.600 15 7 16 7h4c1 0 2 1 2 2v1.500c0 3-2 4.500-4.500 4.500-2 0-3.300-1-3.800-2.500h-1.400C12.800 14 11.500 15 9.500 15 6.500 15 4.500 13.500 4 11z"/></svg><span class="bt"><span>Отдел недвижимости</span><span class="bt2">Ключи от Краснодара</span></span></b>
     <span class="stamp">Секретно</span>
@@ -368,7 +390,7 @@ html.gated{overflow:hidden}
   a.addEventListener("pause",function(){on=false;set(false)});
   function start(){
     if(on)return;
-    a.volume=.55;
+    if(!gainNode)a.volume=.55;
     var p=a.play();
     if(p&&p.catch){p.catch(function(){})}
   }
@@ -382,6 +404,7 @@ html.gated{overflow:hidden}
   function tap(e){
     if(ac&&ac.state==="suspended"){try{ac.resume()}catch(x){}}
     if(on)return;
+    if(!g.hidden)return;
     if(e.target&&s.contains(e.target))return;
     start();
   }
@@ -391,7 +414,7 @@ html.gated{overflow:hidden}
      печатается, как на печатной машинке, со звуком клавиш, и открывается визитка */
   var g=document.getElementById("gate"),fl=document.getElementById("flash");
   var reduce=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches);
-  var ac=null,nb=null,typing=false,done=false,t0=0;
+  var ac=null,nb=null,typing=false,done=false,t0=0,gainNode=null;
   function getAC(){if(!ac){var C=window.AudioContext||window.webkitAudioContext;if(C){try{ac=new C()}catch(e){}}}return ac}
   function unlock(){var c=getAC();if(c&&c.state==="suspended"){try{c.resume()}catch(e){}}}
   function noise(c){
@@ -428,8 +451,37 @@ html.gated{overflow:hidden}
     el.innerHTML='<i class="tp"></i><i class="gh"></i>';
     el.tp=el.firstChild;el.gh=el.lastChild;el.gh.textContent=el.t;
   });
+  /* музыка не играет, пока печатается текст: во время печати она идёт беззвучно (чтобы браузер разрешил запуск),
+     а когда визитка открывается, звук плавно нарастает с самого начала трека */
+  function prepareMusic(){
+    var c=getAC();unlock();
+    if(c&&!gainNode){
+      try{
+        var src=c.createMediaElementSource(a);gainNode=c.createGain();gainNode.gain.value=0;
+        src.connect(gainNode);gainNode.connect(c.destination);a.volume=1;
+      }catch(e){gainNode=null}
+    }
+    if(!gainNode)a.volume=0;
+  }
+  function fadeIn(ms){
+    var to=.55;
+    if(gainNode&&ac){
+      var t=ac.currentTime;gainNode.gain.cancelScheduledValues(t);
+      gainNode.gain.setValueAtTime(0,t);gainNode.gain.linearRampToValueAtTime(to,t+ms/1000);
+    }else{
+      var st=Date.now();
+      (function f(){var k=Math.min(1,(Date.now()-st)/ms);a.volume=to*k;if(k<1)setTimeout(f,50)})();
+    }
+  }
+  function beginMusic(){
+    unlock();
+    try{a.currentTime=0}catch(e){}
+    if(!on)start();
+    fadeIn(3000);
+  }
   function finish(){
     if(done)return;done=true;
+    beginMusic();
     fl.classList.remove("go");void fl.offsetWidth;fl.classList.add("go");
     setTimeout(function(){g.hidden=true;document.documentElement.classList.remove("gated")},220);
   }
@@ -453,13 +505,9 @@ html.gated{overflow:hidden}
   }
   g.addEventListener("click",function(){
     unlock();
-    if(!typing){start();runIntro()}
+    if(!typing){prepareMusic();start();runIntro()}
     else if(Date.now()-t0>700){finish()}
   });
-  a.addEventListener("playing",function(){if(!typing&&!g.hidden)runIntro()});
-  a.volume=.55;
-  var p0=a.play();
-  if(p0&&p0.catch){p0.catch(function(){})}
   document.addEventListener("visibilitychange",function(){
     if(document.hidden){was=on;if(was){a.pause()}}
     else if(was){start();was=false}
@@ -628,6 +676,46 @@ html.gated{overflow:hidden}
   if(window.ResizeObserver){new ResizeObserver(size).observe(box)}
   if(window.IntersectionObserver){new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(box)}
   requestAnimationFrame(function(ts){last=ts;frame(ts)});
+})();
+</script>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="shT">
+  <div class="sheet-box"><b id="shT"></b><p id="shP"></p><button class="ub" id="shX" type="button">Понятно</button></div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function(){
+  var shareBtn=document.getElementById("shareBtn"),saveBtn=document.getElementById("saveBtn"),
+      sheet=document.getElementById("sheet"),shT=document.getElementById("shT"),shP=document.getElementById("shP"),
+      shX=document.getElementById("shX"),toast=document.getElementById("toast");
+  var url="https://tamara-neplyaha.github.io/mib.html",title="Досье агента Т. — Тамара Непляха",tt=0;
+  function showToast(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},2400)}
+  function showSheet(t,p){shT.textContent=t;shP.textContent=p;sheet.hidden=false;try{shX.focus()}catch(e){}}
+  function closeSheet(){sheet.hidden=true}
+  shX.addEventListener("click",closeSheet);
+  sheet.addEventListener("click",function(e){if(e.target===sheet)closeSheet()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!sheet.hidden)closeSheet()});
+  function copy(txt){
+    if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(txt);
+    return new Promise(function(res,rej){
+      try{var i=document.createElement("textarea");i.value=txt;i.setAttribute("readonly","");i.style.cssText="position:fixed;opacity:0";
+        document.body.appendChild(i);i.select();var ok=document.execCommand("copy");document.body.removeChild(i);ok?res():rej()}catch(e){rej(e)}
+    });
+  }
+  shareBtn.addEventListener("click",function(){
+    if(navigator.share){navigator.share({title:title,text:"Досье агента Т.: Тамара Непляха, агент по недвижимости в Краснодаре",url:url}).catch(function(){})}
+    else{copy(url).then(function(){showToast("Ссылка скопирована")}).catch(function(){showSheet("Скопируйте ссылку",url)})}
+  });
+  var dp=null;
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e});
+  window.addEventListener("appinstalled",function(){dp=null;showToast("Визитка сохранена")});
+  var standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||window.navigator.standalone===true;
+  if(standalone)saveBtn.hidden=true;
+  var ua=navigator.userAgent||"",ios=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  saveBtn.addEventListener("click",function(){
+    if(dp){var d=dp;dp=null;d.prompt();return}
+    if(ios){showSheet("Сохранить на экран «Домой»","В Safari нажмите значок «Поделиться» (квадрат со стрелкой вверх), затем «На экран Домой» и «Добавить». Если ссылка открыта в Telegram или другом приложении, сначала выберите «Открыть в Safari».");return}
+    showSheet("Сохранить на главный экран","Откройте меню браузера (три точки справа вверху) и выберите «Установить приложение» или «Добавить на главный экран».");
+  });
 })();
 </script>
 </body>
